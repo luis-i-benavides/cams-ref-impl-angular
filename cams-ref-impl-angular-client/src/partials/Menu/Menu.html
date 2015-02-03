@@ -1,0 +1,15 @@
+	<div id="Menu" data-ng-controller="MenuCtrl">
+	<div id="pnlMenu"    class="navi-wrap"   >
+		<div id="navTitle"    class="hidden-folded padder m-t m-b-sm text-muted text-sm"   >
+			<label id="laCookBookUc"          >
+			CookBook Use Cases
+			</label>
+		</div>
+		<span id="rptUc"      data-ng-repeat="rptUcVar in data.ucMenus" >
+		
+			<div id="pnlLinkMenu"    class="padder m-t text-sm"   >
+<a ui-sref="{{rptUcVar.link}}">{{rptUcVar.name}} <span class="fa fa-fw fa-angle-right text"></span></a>				
+			</div>
+		</span>
+	</div>
+	</div>

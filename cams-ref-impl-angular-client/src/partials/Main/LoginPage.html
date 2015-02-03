@@ -1,0 +1,31 @@
+	<div id="LoginPage" data-ng-controller="LoginPageCtrl">
+	<div id="panelSpacer"    style="height:5em"   >
+	</div>
+	<div id="panel"    class="panel col-md-2 col-md-offset-5"   >
+		<div id="panelHeader"    class="panel-heading text-center"   >
+			<label id="laLoginError"     class="padder font-bold"       >
+			You need to login to access this ressource!
+			</label>
+		</div>
+		<div id="panelBody"    class="panel-body"   >
+			<label id="laLogin"     class="padder control-label"       >
+			Login
+			</label>
+			<input name="txtLogin"   type="text"  class="form-control"       data-ng-model="data.loginSession.Signon"   />
+			
+			<label id="laPassword"     class="padder control-label"       >
+			Password
+			</label>
+			<input name="txtPassword"   type="password"  class="form-control"       data-ng-model="data.loginSession.Password"   />
+			
+		</div>
+		<div id="panelFooter"    class="panel-footer text-right"   >
+			<button name="btnHome"   type="button" class="btn " data-ng-click="homeClick()"     >
+			Home
+			</button>
+			<button name="btnLogin"   type="button" class="btn btn-primary" data-ng-click="loginClick()"     >
+			Login
+			</button>
+		</div>
+	</div>
+	</div>

@@ -1,0 +1,30 @@
+buildscript {
+    repositories {
+		maven{ url 'http://repo.spring.io/libs-release' }
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+// This is not technically a "Spring Boot" application--it is just a library.
+// However, we apply the spring-boot plugin here anyway in order to pick up boot's
+// default dependency versioning, such that we stay in sync with other modules that
+// are actually "boot"-style apps.
+//apply plugin: 'java'
+apply plugin: 'spring-boot'
+bootRepackage.enabled = false
+
+configurations {
+	providedRuntime
+}
+
+dependencies {
+    compile project(':cams-ref-impl-angular-services')
+    compile project(':cams-ref-impl-angular-domain')
+    
+    compile("org.springframework.boot:spring-boot-starter-web")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}

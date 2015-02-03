@@ -1,0 +1,47 @@
+	<div id="DataTableShell" data-ng-controller="DataTableShellCtrl">
+	<div id="pnlApp"    class="app app-header-fixed app-aside-fixed"   >
+			<div id="dockTop"    align="none"  class="app-header navbar"   >
+				<div id="pnlGridHeader"    class="navbar-header bg-black"   >
+					<div id="pnlShellHeader"    class="navbar-brand text-lt"   >
+						<label id="laIcon"     class="glyphicon glyphicon-th-large icon text-success"       >
+						</label>
+						<label id="labelHeaderDatatable"     class="hidden-folded m-l-xs ng-binding"       >
+						Cook Book
+						</label>
+					</div>
+				</div>
+				<div id="pnlNavBar"    class="collapse pos-rlt navbar-collapse box-shadow bg-white-only"   >
+					<div id=""       data-ng-include="'/partials/LoginComp/LoginComp.html'"     >
+					</div>
+				</div>
+			</div>
+			<div id="dockLeft"    align="none"  class="app-aside hidden-xs bg-black"   >
+				<div id=""       data-ng-include="'/partials/Menu/Menu.html'"     >
+				</div>
+			</div>
+			<div id="dockMain"    align="none"  class="app-content padder padder-v "   >
+				<div id="pnlAppContent"    class="app-content-body"   >
+					<alert id="appMessages"   data-ng-repeat="message in messages" type="{{message.Severity}}" close="closeMessage($index)" data-ng-show="message.Severity !== ''"       >
+					{{message.Message}}
+					</alert>
+					<tabset id="tabContainer"   class=""  >
+						<tab id="tabDescrition"    heading="Preview" class=""  >
+							<label id="labTitleUCDyn"     class="baTitle"       >
+							{{data.htSys.Name}}
+							</label>
+									<div ui-view ng-cloak></div>
+						</tab>
+						<tab id="tabModelDesc"    heading="Model documentation" class=""  >
+							<div id=""       data-ng-include="'partials/ModelDocumentation/ModelDocumentation.html'"     >
+							</div>
+						</tab>
+					</tabset>
+				</div>
+			</div>
+			<div id="dockBottom"    align="none"  class="app-footer wrapper b-t bg-light"   >
+				<label id="labCopyrights"          >
+				Blu Age Corporation (c) 2014, all rights reserved
+				</label>
+			</div>
+	</div>
+	</div>

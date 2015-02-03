@@ -1,0 +1,41 @@
+buildscript {
+    repositories {
+		maven{ url 'http://repo.spring.io/libs-release' }
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'spring-boot'
+apply plugin: 'war'
+
+ext {
+    tomcatVersion = '8.0.15'
+    groovyVersion = '2.3.9'
+}
+
+war {
+	baseName = 'cams-ref-impl-angular-server'
+	version =  project.version
+}
+
+configurations {
+	providedRuntime
+}
+
+dependencies {
+    compile project(':cams-ref-impl-angular-client')
+    compile project(':cams-ref-impl-angular-interface')
+
+    compile("org.springframework.boot:spring-boot-starter-web")
+	compile("org.springframework.boot:spring-boot-starter-actuator")
+
+	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+	providedRuntime("org.apache.tomcat.embed:tomcat-embed-jasper")
+	compile("javax.servlet:jstl")
+
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}

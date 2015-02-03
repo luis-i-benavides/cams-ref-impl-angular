@@ -1,0 +1,28 @@
+	<div id="LoginComp" data-ng-controller="LoginCompCtrl">
+	<ul id="pnlLogin"    class="nav navbar-nav navbar-right"   >
+		<li id="pnlDropDown"    class="dropdown"   >
+			<div id="pnlLoginForm"  data-ng-if="data.loginSession.isNotLogged"    style="padding:0.25em"  class="form-inline"   >
+				<label id="labLoginTxt"     class="control-label"       >
+				Login: 
+				</label>
+				<input name="txtLogin"   type="text"  class="form-control input-sm"       data-ng-model="data.loginSession.signon"   />
+				
+				<label id="labPwd"     class="control-label"       >
+				Password: 
+				</label>
+				<input name="txtPwd"   type="password"  class="form-control input-sm"       data-ng-model="data.loginSession.password"   />
+				
+				<a id="lnkLogin"    data-ng-click="lnkLoginEventClick(data.loginSession)" >
+					<label id="labLogin"     class="btn btn-success"       >
+					Login
+					</label>
+				</a>
+			</div>
+			<a id="lnkLogout"  data-ng-if="data.loginSession.isAdmin"    data-ng-click="lnkLoginEventClick(data.loginSession)" >
+				<label id="labLogout"          >
+				Logout({{data.loginSession.Signon}})
+				</label>
+			</a>
+		</li>
+	</ul>
+	</div>

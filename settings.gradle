@@ -1,0 +1,1 @@
+include 'cams-ref-impl-angular-client', 'cams-ref-impl-angular-server', 'cams-ref-impl-angular-interface', 'cams-ref-impl-angular-services', 'cams-ref-impl-angular-domain'

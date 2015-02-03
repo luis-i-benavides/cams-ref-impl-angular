@@ -1,0 +1,47 @@
+	<div id="Uc01DtSimple">
+		<div id="main"    >
+		<alert id="message"   type="{{message.Severity}}" close="closeMessage()" data-ng-show="isNotEmpty(message.Severity) && message.Severity !== ''"       >
+		{{message.Message}}
+		</alert>
+		<table id="dtTeam" role="grid" class="table table-bordered ">
+			<thead>
+				<tr>
+					<th id="colId"  >Id</th>
+					<th id="colName"  >Name</th>
+					<th id="colDateCrea"  >Date created</th>
+					<th id="colDateUpd"  >date updated</th>
+					<th id="btnSelect"  class="btn btn btn-sm btn-icon btn-info">Select</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-ng-repeat="dtTeamVar in data.teamList ">
+			<td>
+			<label id="colId"          >
+			{{dtTeamVar.Id}}
+			</label>
+			</td>
+			<td>
+			<label id="colName"          >
+			{{dtTeamVar.Name}}
+			</label>
+			</td>
+			<td>
+			<label id="colDateCrea"          >
+			{{dtTeamVar.DateCreate}}
+			</label>
+			</td>
+			<td>
+			<label id="colDateUpd"          >
+			{{dtTeamVar.DateUpdated}}
+			</label>
+			</td>
+			<td>
+			<button name="btnSelect"   type="button" class="btn btn btn-sm btn-icon btn-info" data-ng-click="BtnSelectEventClick(dtTeamVar)"     >
+			>
+			</button>
+			</td>
+				</tr>
+			</tbody>
+		</table> 
+		</div>
+	</div>

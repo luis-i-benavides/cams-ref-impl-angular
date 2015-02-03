@@ -1,0 +1,12 @@
+	<div id="ModelDocumentation" data-ng-controller="ModelDocumentationCtrl">
+	<div id="pnlDocEdit"  data-ng-if="data.pnlDocEditVar.IsAdmin"     >
+		<editor id="editor"          data-ng-model="data.htSys"   />
+		
+		<div id="pnlBtnDocumentation"     >
+			<button name="btnUpdateDocumentation"   type="button" class="btn " data-ng-click="BtnUpdateEventClick()"     >
+			Update
+			</button>
+		</div>
+	</div>
+<h:outputText value="${htSys.bean.html}" escape="false"/>	
+	</div>
