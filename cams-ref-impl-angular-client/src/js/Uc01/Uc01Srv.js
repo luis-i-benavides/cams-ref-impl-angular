@@ -10,6 +10,7 @@ angular.module('mainApp').factory('Uc01Srv', ['$http', '$q', function ($http, $q
 	Uc01Srv.getTeamWithPlayers = function () {
 		return $http.get("/Uc01/getTeamWithPlayers");
 	};
+	
 	// Calling defered service operation  getTeamWithPlayers
    Uc01Srv.getTeamWithPlayersDefered = function () {
         var deferred = $q.defer();

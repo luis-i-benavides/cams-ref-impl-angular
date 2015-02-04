@@ -17,7 +17,7 @@ angular.module('mainApp').config(
                   url: '/main',
                   templateUrl: 'partials/Main/DataTableShell.html'
               })
-             .state('main.StartView', {
+              .state('main.StartView', {
                   url: '/StartView',
                   templateUrl: 'partials/Main/StartView.html',
                   controller: 'StartViewCtrl',
@@ -41,5 +41,26 @@ angular.module('mainApp').config(
                             }]
                   }
               })
- ;
+              .state('main.Uc01DtSimple', {
+                  url: '/Uc01DtSimple',
+                  templateUrl: 'partials/Uc01/Uc01DtSimple.html',
+                  controller: 'Uc01DtSimpleCtrl',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                            function ($ocLazyLoad) {
+                                return $ocLazyLoad.load({
+                                        name: 'mainApp',
+                                        files: [
+                                        		'/js/Uc01/Uc01Srv.js'
+                                        		,'/js/Uc01/Uc01DtSimpleCtrl.js'
+                                        	]
+                                    }
+                                );
+                            }]
+                      ,teamListPre: ['deps', 'Uc01Srv', '$stateParams', function(deps, Uc01Srv, $stateParams) {
+                                return Uc01Srv.getTeamWithPlayersDefered();
+                            }]
+                  }
+              })
+              ;
       }]);

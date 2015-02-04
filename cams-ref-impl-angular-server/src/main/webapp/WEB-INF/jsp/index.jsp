@@ -30,8 +30,8 @@
  		<script src="<spring:url value="/js/Main/app.config.js"/>"></script>
 		<script src="<spring:url value="/js/Main/app.directives.js"/>"></script>
 		<script src="<spring:url value="/js/Main/DataTableShellCtrl.js"/>"></script> 
-		<script src="<spring:url value="/js/common/transferSrv.js"/>"></script>
 		<script src="<spring:url value="/js/Main/app.router.js"/>"></script>
+		<script src="<spring:url value="/js/common/transferSrv.js"/>"></script>
 
 		<!-- CSS libraries -->
 	    <link rel="stylesheet" type="text/css" href="<spring:url value="/lib/bootstrap/dist/css/bootstrap.css"/>">

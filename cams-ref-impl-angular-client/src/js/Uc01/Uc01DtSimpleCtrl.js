@@ -9,7 +9,7 @@ angular.module('mainApp').controller('Uc01DtSimpleCtrl',
 					teamBusiness: {},teamList: []
 				};
 				// Assign preloading variable to scope
-				$scope.data.teamList = teamListPre.Data;
+				$scope.data.teamList = teamListPre.data;
 
 				// On Load Action
 				var MainEventOnLoad = function() {
@@ -18,7 +18,7 @@ angular.module('mainApp').controller('Uc01DtSimpleCtrl',
 				MainEventOnLoad();
 				// Event action BtnSelectEventClick
 				$scope.BtnSelectEventClick = function(teamBusiness, causeValidation) {
-					$scope.message = { Severity: 'success', Message: teamBusiness.Name };
+					$scope.message = { Severity: 'success', Message: teamBusiness.name };
 				};
 				$scope.closeMessage = function() {
 					$scope.message.Severity = "";

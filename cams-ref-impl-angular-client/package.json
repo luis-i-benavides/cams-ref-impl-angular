@@ -1,7 +1,7 @@
 {
   "name": "cams-ref-impl-angular-client",
   "version": "0.0.1",
-  "description": "CAMS reference implementation for AngularJS",
+  "description": "CAMS reference implementation for AngularJS and Java",
   "dependencies": {
   },
   "devDependencies": {
