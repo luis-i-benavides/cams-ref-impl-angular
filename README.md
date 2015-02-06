@@ -3,13 +3,14 @@ CAMS Reference Implementation for AngularJS
 
 # Prerequisites
 
-This projects requires a local install of Node.js and the latest version of npm. See [here](https://docs.npmjs.com/getting-started/installing-node) for instructions.
+* Install Node.js and the latest version of npm locally. See [here](https://docs.npmjs.com/getting-started/installing-node) for instructions.
+* Configure the connection to your local MySql database in `cams-ref-impl-angular-server/src/main/resources/application.yml`
 
 # Quick Start
 
 The easiest way to get started is to switch to the project root and execute this command to run in development mode:
 
-    SPRING_PROFILES_ACTIVE=development RESOURCES_PROJECTROOT='pwd' ./gradlew :cams-ref-impl-angular-server:bootRun
+    SPRING_PROFILES_ACTIVE=development RESOURCES_PROJECTROOT=`pwd` ./gradlew :cams-ref-impl-angular-server:bootRun
      
 Or the production version (more optimizations):
 
@@ -27,6 +28,7 @@ or,
      ./gradlew idea  
 
 # To Do (in descending priority)
+* Fix client build for production. Fix serving fonts to browser.
 * Build with Maven (coexisting with Gradle)
 * Build WAR with Gradle and test deployment to servlet container. Consult [this](http://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-gradle-plugin.html) and [this](http://docs.spring.io/spring-boot/docs/current/reference/html/howto-traditional-deployment.html#howto-create-a-deployable-war-file) for details
 * Find out how to move the database configuration in `/cams-ref-impl-angular-server/src/main/resources/application.yml` 
