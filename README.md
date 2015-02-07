@@ -12,11 +12,11 @@ The easiest way to get started is to switch to the project root and execute this
 
     SPRING_PROFILES_ACTIVE=development RESOURCES_PROJECTROOT=`pwd` ./gradlew :cams-ref-impl-angular-server:bootRun
      
-Or in production version (which optimizes static resources using concatenation and minification):
+or to run the application in production mode (which optimizes static resources using concatenation and minification), execute this:
 
     ./gradlew :server:bootRun
     
-Then go to [http://localhost:8080/](http://localhost:8080/)
+then go to [http://localhost:8080/](http://localhost:8080/)
 
 ## Using an IDE
 Gradle can generate the configuration files for either eclipse or IntelliJ IDEA. From the project root execute:
