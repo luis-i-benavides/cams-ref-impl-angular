@@ -1,108 +1,137 @@
-var gulpFilter = require('gulp-filter'),
-    uglify = require('gulp-uglify'),
+var uglify = require('gulp-uglify'),
     cssMinify = require('gulp-minify-css'),
     sourcemaps = require('gulp-sourcemaps'),
     imagemin = require('gulp-imagemin'),
     pngcrush = require('imagemin-pngcrush'),
-    less = require('gulp-less'),
     concat = require('gulp-concat'),
-    gulp = require('gulp');
-
-var paths = {
-    app: './src/js',
-    css: {
-        files: ['src/css/*.css'],
-        root: 'src/css'
-    },
-    less: ['src/less/*'],
-    lib: './src/lib',
-    assets: ["src/cache.manifest"],
-    images: ["src/img/*"],
-    destination: './dist'
-};
+    gulp = require('gulp'),
+    combiner = require('stream-combiner2'),
+    del = require('del');
 
 // Optimize application CSS files and copy to "dist" folder
-gulp.task('optimize-and-copy-css', function() {
-
-    return gulp.src(paths.css.files)
-        .pipe(cssMinify({root : paths.css.root, noRebase: true}))
-        .pipe(gulp.dest(paths.destination + '/css'));
+gulp.task('optimize-and-copy-app-css', function() {
+	var combined = combiner.obj([
+		gulp.src('src/css/*.css'),
+		concat('all.min.css'),
+		cssMinify(),
+		gulp.dest('dist/css')                      
+	]);
+	combined.on('error', errorHandler);
+    return combined;
+});
+    
+// Optimize library CSS files and copy to "dist" folder
+gulp.task('optimize-and-copy-lib-css', function() {
+    var combined = combiner.obj([
+    	gulp.src([
+	      'src/lib/bootstrap/dist/css/bootstrap.css',
+	      'src/lib/bootstrap/dist/css/bootstrap-theme.css',
+	      'src/lib/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css'
+         ]),
+    	concat('all.min.css'),
+        cssMinify(),
+        gulp.dest('dist/lib')
+	]);
+	combined.on('error', errorHandler);
+    return combined;
 });
 
-//Copy application JavaScript files to "dist" folder
-gulp.task('optimize-and-copy-js', function() {
-
-    return gulp
-		.src(["./src/js/**/*.js", "!./src/js/**/*.min.js"])
-	    .pipe(gulp.dest(paths.destination + '/js'));
-});
-
-//Optimize application main JavaScript files and copy to "dist" folder
-gulp.task('optimize-and-copy-main-js', function() {
-
-    return gulp
-		.src([
-	      paths.app + '/Main/app.js',
-	      paths.app + '/Main/app.config.js',
-	      paths.app + '/Main/app.router.js',
-	      paths.app + '/Main/app.directives.js',
-	      paths.app + '/Main/DataTableShellCtrl.js'
-	      ], {base: 'src/js/Main'})
-		.pipe(concat('app.min.js'))
-	    .pipe(sourcemaps.init())
-	    .pipe(uglify())
-	    .pipe(sourcemaps.write('../Main'))
-	    .on("error", errorHandler)
-    	.pipe(gulp.dest(paths.destination + '/js/Main'));
+// Optimize application main JavaScript files and copy to "dist" folder
+gulp.task('optimize-and-copy-app-js', function() {
+	var combined = combiner.obj([
+	    gulp.src([
+		  'src/js/Main/app.js',
+		  'src/js/Main/app.config.js',
+		  'src/js/Main/app.router.js',
+		  'src/js/Main/app.directives.js',
+		  'src/js/Main/DataTableShellCtrl.js',
+		  'src/js/common/transferSrv.js'
+		  ]),
+		concat('main.min.js'),
+	    sourcemaps.init(),
+	    uglify(),
+	    sourcemaps.write('../Main'),
+    	gulp.dest('dist/js/Main')
+	]);
+	combined.on('error', errorHandler);
+    return combined;
 });
 
 // Optimize bower-managed JavaScript dependencies and copy to "dist" folder
-gulp.task('optimize-and-copy-lib', function() {
-
-	var libFiles = [
-	  		      paths.lib + '/jquery/jquery.js', 
-			      paths.lib + '/angular/angular.js', 
-			      paths.lib + '/angular-resource/angular-resource.js',
-			      paths.lib + '/angular-route/angular-route.js',
-			      paths.lib + '/angular-ui-router/release/angular-ui-router.js',
-			      paths.lib + '/angular-cookies/angular-cookies.js',
-			      paths.lib + '/angular-bootstrap/ui-bootstrap-tpls.js',
-			      paths.lib + '/angular-ui-utils/ui-utils.js',
-			      paths.lib + '/oclazyload/dist/ocLazyLoad.js',
-			      paths.lib + '/bootstrap/dist/js/bootstrap.js',
-			      paths.lib + '/moment/moment.js',
-			      paths.lib + '/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
-			      ];
-    return gulp
-		.src(libFiles, { base: 'src/lib' })
-		.pipe(concat('all.min.js'))
-	    .pipe(sourcemaps.init())
-	    .pipe(uglify())
-	    .pipe(sourcemaps.write('../lib'))
-	    .on("error", errorHandler)
-    	.pipe(gulp.dest(paths.destination + '/lib'));
+gulp.task('optimize-and-copy-lib-js', function() {
+	var combined = combiner.obj([
+	   gulp.src([
+	      'src/lib/jquery/jquery.js', 
+	      'src/lib/angular/angular.js', 
+	      'src/lib/angular-resource/angular-resource.js',
+	      'src/lib/angular-route/angular-route.js',
+	      'src/lib/angular-ui-router/release/angular-ui-router.js',
+	      'src/lib/angular-cookies/angular-cookies.js',
+	      'src/lib/angular-bootstrap/ui-bootstrap-tpls.js',
+	      'src/lib/angular-ui-utils/ui-utils.js',
+	      'src/lib/oclazyload/dist/ocLazyLoad.js',
+	      'src/lib/bootstrap/dist/js/bootstrap.js',
+	      'src/lib/moment/moment.js',
+	      'src/lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
+	      ]),
+      concat('all.min.js'),
+      sourcemaps.init(),
+      uglify(),
+ 	  sourcemaps.write('../lib'),
+ 	  gulp.dest('dist/lib')
+    ]);
+ 	combined.on('error', errorHandler);
+    return combined;
 });
 
-gulp.task('copy-images', function() {
-    return gulp.src(paths.images)
-        .pipe(imagemin({
-            progressive: true,
-            svgoPlugins: [{removeViewBox: false}],
-            use: [pngcrush()]
-        }))
-        .pipe(gulp.dest(paths.destination + '/img'))
+// Optimize images and copy to "dist" folder
+gulp.task('optimize-and-copy-images', function() {
+	var combined = combiner.obj([
+		 gulp.src('src/img/**/*'),
+		 imagemin({
+		     progressive: true,
+		     svgoPlugins: [{removeViewBox: false}],
+		     use: [pngcrush()]
+		 }),
+		 gulp.dest('dist/img')
+     ]);
+ 	combined.on('error', errorHandler);
+    return combined;
 });
 
-gulp.task('copy-assets', function() {
-    return gulp.src(paths.assets)
-        .pipe(gulp.dest(paths.destination))
+// Copy static resources to "dist" folder
+gulp.task('copy-static-resources', function() {
+	var combined = combiner.obj([
+	   gulp.src(
+		   ['src/js/**', 'src/fonts/**', 'src/partials/**'],
+		   {base: 'src/'}
+	   ),
+	   gulp.dest('dist')                    
+	]);
+ 	combined.on('error', errorHandler);
+    return combined;
 });
 
-gulp.task('build', ['optimize-and-copy-css', 'optimize-and-copy-js', 'optimize-and-copy-main-js', 'optimize-and-copy-js', 'optimize-and-copy-lib',
-    'copy-images', 'copy-assets'], function(){});
+gulp.task('clean', function (cb) {
+	  del(['dist'], cb);
+});
 
-//Handle the error
+gulp.task('build', 
+		['optimize-and-copy-app-css', 'optimize-and-copy-lib-css', 
+		 'optimize-and-copy-app-js', 'optimize-and-copy-lib-js', 
+		 'optimize-and-copy-images', 'copy-static-resources'], 
+		 function(){});
+
+gulp.task('clean', function(cb){
+	del(['dist'], cb);
+});
+
+gulp.task('default', ['clean'], function() {
+    // This ensures that 'build' executes after 'clean' has finished 
+	gulp.start('build');
+});
+
 function errorHandler (error) {
-  console.log(error.toString());
-  this.emit('end');
+	console.log(error.toString());
+	this.emit('end');
 }

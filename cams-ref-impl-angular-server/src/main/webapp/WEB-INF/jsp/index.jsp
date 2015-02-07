@@ -49,17 +49,20 @@
 	<c:otherwise>
 		<!-- JS libraries -->
 		<script src="<spring:url value="/lib/all.min.js"/>"></script>
+		<script src="https://code.angularjs.org/1.2.5/i18n/angular-locale_fr-fr.js"></script>
 	
-		<!-- Application common JS -->
+		<!-- Main application JS -->
+		<script src="<spring:url value="/js/Main/main.min.js"/>"></script>
 
-		<!-- Application main entrypoint JS -->
+		<!-- CSS libraries -->
+	    <link rel="stylesheet" type="text/css" href="<spring:url value="/lib/all.min.css"/>">
 
-		<!-- CSS -->
+		<!-- Application CSS -->
+	    <link rel="stylesheet" type="text/css" href="<spring:url value="/css/all.min.css"/>">
 	</c:otherwise>	
 </c:choose>
 
 </head>
 <body>
 	<div ui-view ng-cloak></div>
-	
 </html>

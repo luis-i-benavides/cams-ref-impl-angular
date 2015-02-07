@@ -53,7 +53,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
 		boolean devMode = this.env.acceptsProfiles("development");
 
-		String location = devMode ? "file:///" + getProjectRootRequired() + clientSourcePath : "classpath:static/";
+		String location = devMode ? "file:///" + getProjectRootRequired() + clientSourcePath : "classpath:/static/";
 		Integer cachePeriod = devMode ? 0 : null;
 		boolean useResourceCache = !devMode;
 		String version = devMode ? "dev" : this.appVersion;
