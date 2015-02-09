@@ -28,7 +28,7 @@ or,
      ./gradlew idea  
 
 ## Debugging the Client Code
-While debugging the AngularJS code, it is useful to reload the page in the browser automatically when any source file changes. You can do this by running the `gulp watch` command in `cams-ref-impl-angular/cams-ref-impl-angular-client`.  
+While debugging the AngularJS code locally, it is useful to reload the page in the browser automatically when any source file changes. You can do this by running the `gulp watch` command in `cams-ref-impl-angular/cams-ref-impl-angular-client`.  
 
 
 # To Do (in descending priority)
