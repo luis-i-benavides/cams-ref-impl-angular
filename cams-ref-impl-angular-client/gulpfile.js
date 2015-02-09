@@ -2,7 +2,7 @@ var uglify = require('gulp-uglify'),
     cssMinify = require('gulp-minify-css'),
     sourcemaps = require('gulp-sourcemaps'),
     imagemin = require('gulp-imagemin'),
-    pngcrush = require('imagemin-pngcrush'),
+    pngquant = require('imagemin-pngquant'),
     concat = require('gulp-concat'),
     gulp = require('gulp'),
     combiner = require('stream-combiner2'),
@@ -92,7 +92,7 @@ gulp.task('optimize-and-copy-images', function() {
 		 imagemin({
 		     progressive: true,
 		     svgoPlugins: [{removeViewBox: false}],
-		     use: [pngcrush()]
+		     use: [pngquant()]
 		 }),
 		 gulp.dest('dist/img')
      ]);
