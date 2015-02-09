@@ -45,6 +45,8 @@
 	    <link rel="stylesheet" type="text/css" href="<spring:url value="/css/font-awesome.min.css"/>">
 	    <link rel="stylesheet" type="text/css" href="<spring:url value="/css/font.css"/>">
 	    <link rel="stylesheet" type="text/css" href="<spring:url value="/css/simple-line-icons.css"/>">
+	    
+	    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
     </c:when>
 	<c:otherwise>
 		<!-- JS libraries -->

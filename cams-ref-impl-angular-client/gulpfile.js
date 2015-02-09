@@ -6,7 +6,8 @@ var uglify = require('gulp-uglify'),
     concat = require('gulp-concat'),
     gulp = require('gulp'),
     combiner = require('stream-combiner2'),
-    del = require('del');
+    del = require('del'),
+    livereload = require('gulp-livereload');
 
 // Optimize application CSS files and copy to "dist" folder
 gulp.task('optimize-and-copy-app-css', function() {
@@ -129,6 +130,15 @@ gulp.task('clean', function(cb){
 gulp.task('default', ['clean'], function() {
     // This ensures that 'build' executes after 'clean' has finished 
 	gulp.start('build');
+});
+
+gulp.task('watch', function() {
+	  // Create LiveReload server
+	  livereload.listen();
+
+	  // Watch any files in dist/, reload on change
+	  gulp.watch(['src/**']).on('change', livereload.changed);
+
 });
 
 function errorHandler (error) {
