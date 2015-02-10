@@ -87,13 +87,14 @@ gulp.task('optimize-and-copy-lib-js', function() {
 
 // Optimize images and copy to "dist" folder
 gulp.task('optimize-and-copy-images', function() {
+	// TO DO: Replace imagemin by another similar Gulp plugin, since it cannot be installed in Windows
 	var combined = combiner.obj([
 		 gulp.src('src/img/**/*'),
-		 imagemin({
-		     progressive: true,
-		     svgoPlugins: [{removeViewBox: false}],
-		     use: [pngquant()]
-		 }),
+//		 imagemin({
+//		     progressive: true,
+//		     svgoPlugins: [{removeViewBox: false}],
+//		     use: [pngquant()]
+//		 }),
 		 gulp.dest('dist/img')
      ]);
  	combined.on('error', errorHandler);
