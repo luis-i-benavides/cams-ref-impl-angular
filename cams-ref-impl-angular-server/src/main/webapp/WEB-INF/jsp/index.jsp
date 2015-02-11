@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html data-ng-app="mainApp">
@@ -6,6 +6,7 @@
 	<title>HowToNet</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
+    <base href="/">
 
 <spring:eval var="inDevelopment" expression="@environment.acceptsProfiles('development')"/>
 <c:choose>
@@ -46,7 +47,7 @@
 	    <link rel="stylesheet" type="text/css" href="<spring:url value="/css/font.css"/>">
 	    <link rel="stylesheet" type="text/css" href="<spring:url value="/css/simple-line-icons.css"/>">
 	    
-	    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+<!-- 	    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script> -->
     </c:when>
 	<c:otherwise>
 		<!-- JS libraries -->
