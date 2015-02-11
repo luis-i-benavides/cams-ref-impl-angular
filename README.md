@@ -33,9 +33,10 @@ While debugging the AngularJS code locally, it is useful to reload the page in t
 
 # To Do (in descending priority)
 * Add authentication and authorization
-* Implement use cases 4, 5, and 17. Also, start using value object to serialize and return to the browser
+* Implement use cases 4, 5, and 17. Look at which is the best Spring Data repository interface to use, probably `JpaRepository`. Also, start using value objects to serialize and return to the browser
 * Build with Maven (coexisting with Gradle)
 * Build WAR with Gradle and test deployment to servlet container. Consult [this](http://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-gradle-plugin.html) and [this](http://docs.spring.io/spring-boot/docs/current/reference/html/howto-traditional-deployment.html#howto-create-a-deployable-war-file) for details
+* Downgrade to AngularJS 1.2.x.
 * Find out how to move the database configuration in `/cams-ref-impl-angular-server/src/main/resources/application.yml` 
 to the `/cams-ref-impl-angular-domain` project. [This](https://github.com/spring-projects/spring-boot/issues/1805) issue may be related 
 
