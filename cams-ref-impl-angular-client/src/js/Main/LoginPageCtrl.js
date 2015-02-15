@@ -16,7 +16,7 @@ angular.module('mainApp').controller('LoginPageCtrl',
 				// Event action loginClick
 				$scope.loginClick = function( causeValidation) {
 					MainSrv.LoginUser($scope.data.loginSession).success( function(loginSession) {
-						$scope.data.loginSession = loginSession.Data;
+						$scope.data.loginSession = loginSession.data;
 						$scope.previousState();
 					});
 					// Remove all cache from template, to ensure the security is working.	

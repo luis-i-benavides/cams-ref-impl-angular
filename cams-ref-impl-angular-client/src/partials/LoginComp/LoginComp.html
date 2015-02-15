@@ -13,14 +13,14 @@
 				<input name="txtPwd"   type="password"  class="form-control input-sm"       data-ng-model="data.loginSession.password"   />
 				
 				<a id="lnkLogin"    data-ng-click="lnkLoginEventClick(data.loginSession)" >
-					<label id="labLogin"     class="btn btn-success"       >
+					<label id="labLogin" class="btn btn-success">
 					Login
 					</label>
 				</a>
 			</div>
 			<a id="lnkLogout"  data-ng-if="data.loginSession.isAdmin"    data-ng-click="lnkLoginEventClick(data.loginSession)" >
-				<label id="labLogout"          >
-				Logout({{data.loginSession.Signon}})
+				<label id="labLogout" class="btn btn-success">
+				Logout({{data.loginSession.signon}})
 				</label>
 			</a>
 		</li>

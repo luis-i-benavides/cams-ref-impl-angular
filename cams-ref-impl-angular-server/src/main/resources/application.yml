@@ -16,5 +16,8 @@ spring:
     # This naming strategy preserves the SQL names that JPA annotations specify without any changes (i.e. camel case -> underscore separated) 
     hibernate.naming-strategy: org.hibernate.cfg.DefaultNamingStrategy   
 
+security:
+  user:
+    password: password
 app:
   version: de4db33f

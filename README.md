@@ -47,3 +47,4 @@ to the `/cams-ref-impl-angular-domain` project. [This](https://github.com/spring
 # References
 
 * [Configuring resource handlers with resource resolvers and resource transformers](https://github.com/bclozel/spring-resource-handling/blob/master/server/src/main/java/org/springframework/samples/resources/WebConfig.java#L96-L117)
+* For details on how authentication was implemented using Spring Security, see [this](https://spring.io/blog/2015/01/12/the-login-page-angular-js-and-spring-security-part-ii) article series 
