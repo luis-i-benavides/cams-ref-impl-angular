@@ -8,10 +8,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -27,6 +30,19 @@ import org.springframework.web.util.WebUtils;
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+	@Autowired
+	DataSource dataSource;
+	
+	@Autowired
+	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+ 
+	  auth.jdbcAuthentication().dataSource(dataSource)
+		.usersByUsernameQuery(
+			"SELECT UserId, pwd, true FROM cookbook.login WHERE UserId=?")
+		.authoritiesByUsernameQuery(
+			"SELECT login.UserId, role.name FROM login, role WHERE login.UserId=? AND login.login_role_fk=role.RoleId");
+	}	
+ 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.formLogin().and().logout().and().authorizeRequests()
