@@ -17,15 +17,13 @@ import com.accenture.cams.ri.ng.services.howToSystemUC.HowToSystemUCService;
 @RequestMapping("/Menu")
 public class MenuController {
 
-	@Autowired
-	HowToSystemUCService howToSystemUCService;
+    @Autowired
+    HowToSystemUCService howToSystemUCService;
 
-	@RequestMapping(value = "/howToSystemUCFindAll", method = RequestMethod.GET)
-	public RequestResult<List<HowToSystemUseCase>> howToSystemUCFindAll() {
-		List<HowToSystemUseCase> howToSystemUCFindAll = howToSystemUCService
-				.howToSystemUCFindAll();
-		return new RequestResult<List<HowToSystemUseCase>>(
-				howToSystemUCFindAll, new ArrayList<ApplicationMessage>());
-	}
+    @RequestMapping(value = "/howToSystemUCFindAll", method = RequestMethod.GET)
+    public RequestResult<List<HowToSystemUseCase>> howToSystemUCFindAll() {
+	List<HowToSystemUseCase> howToSystemUCFindAll = howToSystemUCService.howToSystemUCFindAll();
+	return new RequestResult<List<HowToSystemUseCase>>(howToSystemUCFindAll, new ArrayList<ApplicationMessage>());
+    }
 
 }

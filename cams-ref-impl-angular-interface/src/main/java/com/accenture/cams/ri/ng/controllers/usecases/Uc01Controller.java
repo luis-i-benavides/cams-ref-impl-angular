@@ -17,13 +17,12 @@ import com.accenture.cams.ri.ng.services.team.TeamService;
 @RequestMapping("/Uc01")
 public class Uc01Controller {
 
-	@Autowired
-	TeamService teamService;
+    @Autowired
+    TeamService teamService;
 
-	@RequestMapping(value = "/getTeamWithPlayers", method = RequestMethod.GET)
-	public RequestResult<List<Team>> getTeamWithPlayers() {
-		List<Team> howToSystemUCFindAll = teamService.getTeamWithPlayers();
-		return new RequestResult<List<Team>>(howToSystemUCFindAll,
-				new ArrayList<ApplicationMessage>());
-	}
+    @RequestMapping(value = "/getTeamWithPlayers", method = RequestMethod.GET)
+    public RequestResult<List<Team>> getTeamWithPlayers() {
+	List<Team> howToSystemUCFindAll = teamService.getTeamWithPlayers();
+	return new RequestResult<List<Team>>(howToSystemUCFindAll, new ArrayList<ApplicationMessage>());
+    }
 }

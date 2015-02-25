@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SecurityController {
 
-	@RequestMapping("/user")
-	public Principal user(Principal user) {
-		return user;
-	}
+    @RequestMapping("/user")
+    public Principal user(Principal user) {
+	return user;
+    }
 }
