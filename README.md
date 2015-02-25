@@ -8,7 +8,7 @@ CAMS Reference Implementation for AngularJS
 
 # Quick Start
 
-The easiest way to get started is to switch to the project root and execute this UNIX command to run the application in development mode:
+The easiest way to get started is to switch to the project root and execute this *NIX command to run the application in development mode:
 
     SPRING_PROFILES_ACTIVE=development RESOURCES_PROJECTROOT=`pwd` ./gradlew :cams-ref-impl-angular-server:bootRun
      
@@ -32,7 +32,8 @@ While debugging the AngularJS code locally, it is useful to reload the page in t
 
 
 # To Do (in descending priority)
-* Add authentication and authorization
+* Add feedback to user on login and logout
+* Remove security classes no longer used
 * Implement use cases 4, 5, and 17. Look at which is the best Spring Data repository interface to use, probably `JpaRepository`. Also, start using value objects to serialize and return to the browser
 * Build with Maven (coexisting with Gradle)
 * Build WAR with Gradle and test deployment to servlet container. Consult [this](http://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-gradle-plugin.html) and [this](http://docs.spring.io/spring-boot/docs/current/reference/html/howto-traditional-deployment.html#howto-create-a-deployable-war-file) for details
@@ -42,7 +43,7 @@ to the `/cams-ref-impl-angular-domain` project. [This](https://github.com/spring
 
 # Notes
 * Relative state names in `ui-sref` attributes must be prefixed by '`.`'. See `/cams-ref-impl-angular/cams-ref-impl-angular-client/src/partials/Menu/Menu.html` for an example.
-* I have lowercased the property names of JSON structures returned to the client.
+* I have lowercased the first letter of property names in JSON structures returned to the client.
 
 # References
 

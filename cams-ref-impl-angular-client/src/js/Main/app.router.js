@@ -61,6 +61,27 @@ angular.module('mainApp').config(
                                 return Uc01Srv.getTeamWithPlayersDefered();
                             }]
                   }
+              })
+              .state('main.Uc04DtSortedPage', {
+                  url: '/Uc04DtSortedPage',
+                  templateUrl: 'partials//Uc04/Uc04DtSortedPage.html',
+                  controller: 'Uc04DtSortedPageCtrl',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                            function ($ocLazyLoad) {
+                                return $ocLazyLoad.load({
+                                        name: 'mainApp',
+                                        files: [
+                                        		'/js/Uc04/Uc04Srv.js'
+                                        		,'/js/Uc04/Uc04DtSortedPageCtrl.js'
+                                        	]
+                                    }
+                                );
+                            }]
+                      ,playerListPre: ['deps', 'Uc04Srv', '$stateParams', function(deps, Uc04Srv, $stateParams) {
+                                return Uc04Srv.getPlayersPagedDefered();
+                            }]
+                  }
               });
     	// use the HTML5 History API
         $locationProvider.html5Mode(true);
