@@ -1,0 +1,48 @@
+	<div id="Uc04DtSortedPage">
+		<div id="header"    >
+		<label id="labSortedTitle"     class="baTitle"       >
+		Sorted DataTable
+		</label>
+		</div>
+		<div id="main"    >
+		<table id="dtPlayers" role="grid" class="table table-bordered table table-bordered">
+			<thead>
+				<tr>
+					<th id="coldId" data-thsort data-reverse='dtPlayersReverse' data-by="dtPlayersOrder" data-order="'id'" data-paginator-change="playerListPagedChange" >#</th>
+					<th id="colName" data-thsort data-reverse='dtPlayersReverse' data-by="dtPlayersOrder" data-order="'name'" data-paginator-change="playerListPagedChange" >Name</th>
+					<th id="colRating" data-thsort data-reverse='dtPlayersReverse' data-by="dtPlayersOrder" data-order="'rating'" data-paginator-change="playerListPagedChange" >Rating</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-ng-repeat="dtPlayersVar in data.playerList | orderBy:dtPlayersOrder:dtPlayersReverse">
+			<td>
+			<div id="coldId"     >
+			
+				<label id="laId"          >
+				{{dtPlayersVar.id}}
+				</label>
+			</div>
+			</td>
+			<td>
+			<div id="colName"     >
+			
+				<label id="laName"          >
+				{{dtPlayersVar.name}}
+				</label>
+			</div>
+			</td>
+			<td>
+			<div id="colRating"     >
+			
+				<outputLabel id="laRating"          />
+				{{dtPlayersVar.rating}}
+				
+			</div>
+			</td>
+				</tr>
+			</tbody>
+		</table> 
+		</div>
+	<pagination id="navPlayers"   boundary-links="true" class="pagination-sm " items-per-page="5" max-size="4" ng-model="data.playerListPaged.page" ng-change="playerListPagedChange()" total-items="data.playerListPaged.totalCount"       />
+	
+	</div>
