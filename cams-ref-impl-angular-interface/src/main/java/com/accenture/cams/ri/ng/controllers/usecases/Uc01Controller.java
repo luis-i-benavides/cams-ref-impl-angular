@@ -22,7 +22,7 @@ public class Uc01Controller {
 
     @RequestMapping(value = "/getTeamWithPlayers", method = RequestMethod.GET)
     public RequestResult<List<Team>> getTeamWithPlayers() {
-	List<Team> howToSystemUCFindAll = teamService.getTeamWithPlayers();
-	return new RequestResult<List<Team>>(howToSystemUCFindAll, new ArrayList<ApplicationMessage>());
+	List<Team> teams = teamService.getTeamWithPlayers();
+	return new RequestResult<List<Team>>(teams, new ArrayList<ApplicationMessage>());
     }
 }
