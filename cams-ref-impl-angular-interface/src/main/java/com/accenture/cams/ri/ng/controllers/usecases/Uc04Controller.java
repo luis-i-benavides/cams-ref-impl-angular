@@ -1,7 +1,9 @@
 package com.accenture.cams.ri.ng.controllers.usecases;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,16 +20,20 @@ import com.accenture.cams.ri.ng.common.PagedCollection;
 import com.accenture.cams.ri.ng.common.RequestResult;
 import com.accenture.cams.ri.ng.domain.entity.Player;
 import com.accenture.cams.ri.ng.services.player.PlayerService;
+import com.accenture.cams.ri.ng.vos.PlayerVO;
 
 @RestController
 @RequestMapping("/Uc04")
 public class Uc04Controller {
 
     @Autowired
+    private Mapper mapper;
+
+    @Autowired
     PlayerService playerService;
 
     @RequestMapping(value = "/getPlayersPaged", method = RequestMethod.POST)
-    public RequestResult<PagedCollection<Player>> getTeamWithPlayers(@RequestBody PageRequested pageRequested) {
+    public RequestResult<PagedCollection<PlayerVO>> getTeamWithPlayers(@RequestBody PageRequested pageRequested) {
 
 	Sort sort = pageRequested.getOrderBy() == null ? null : new Sort(
 		pageRequested.isOrderByDirection() ? Sort.Direction.DESC : Sort.Direction.ASC,
@@ -36,10 +42,17 @@ public class Uc04Controller {
 
 	Page<Player> playerPage = playerService.findAll(pageable);
 
-	PagedCollection<Player> pagedPlayers = new PagedCollection<Player>(pageRequested.getPage(),
-		pageRequested.getPageSize(), playerPage.getTotalElements(), playerPage.getContent(),
-		pageRequested.getOrderBy(), pageRequested.isOrderByDirection());
+	List<PlayerVO> playersVo = new ArrayList<PlayerVO>();
+	mapper.map(playerPage.getContent(), playersVo);
 
-	return new RequestResult<PagedCollection<Player>>(pagedPlayers, new ArrayList<ApplicationMessage>());
+	PagedCollection<PlayerVO> pagedPlayers = new PagedCollection<PlayerVO>(
+		pageRequested.getPage(),
+		pageRequested.getPageSize(), 
+		playerPage.getTotalElements(), 
+		playersVo, 
+		pageRequested.getOrderBy(),
+		pageRequested.isOrderByDirection());
+
+	return new RequestResult<PagedCollection<PlayerVO>>(pagedPlayers, new ArrayList<ApplicationMessage>());
     }
 }
