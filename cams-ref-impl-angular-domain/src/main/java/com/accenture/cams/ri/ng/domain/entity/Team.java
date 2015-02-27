@@ -12,8 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 @Entity
 @Table(name = "team")
 public class Team implements Serializable {
@@ -38,7 +36,6 @@ public class Team implements Serializable {
     private String image;
 
     @OneToMany(mappedBy = "team", targetEntity = Player.class, fetch = FetchType.EAGER)
-    @JsonManagedReference
     private Collection<Player> players;
 
     /**

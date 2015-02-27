@@ -3,6 +3,8 @@ package com.accenture.cams.ri.ng.vos;
 import java.util.Collection;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 public class TeamVO {
 
     private Long id;
@@ -57,6 +59,7 @@ public class TeamVO {
 	this.image = image;
     }
 
+    @JsonManagedReference
     public Collection<PlayerVO> getPlayers() {
 	return players;
     }

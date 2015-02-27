@@ -2,6 +2,7 @@ package com.accenture.cams.ri.ng.controllers.usecases;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,8 +43,8 @@ public class Uc04Controller {
 
 	Page<Player> playerPage = playerService.findAll(pageable);
 
-	List<PlayerVO> playersVo = new ArrayList<PlayerVO>();
-	mapper.map(playerPage.getContent(), playersVo);
+	List<PlayerVO> playersVo = playerPage.getContent().stream().map(s -> mapper.map(s, PlayerVO.class))
+		.collect(Collectors.<PlayerVO> toList());
 
 	PagedCollection<PlayerVO> pagedPlayers = new PagedCollection<PlayerVO>(
 		pageRequested.getPage(),

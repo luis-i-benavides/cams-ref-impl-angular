@@ -1,5 +1,9 @@
 package com.accenture.cams.ri.ng.vos;
 
+import java.util.Collection;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 public class PlayerVO {
 
     private Long id;
@@ -9,6 +13,8 @@ public class PlayerVO {
     private Long rating;
 
     private Long contractId;
+
+    private Collection<ContractVO> contracts;
 
     private TeamVO team;
 
@@ -44,6 +50,15 @@ public class PlayerVO {
 	this.contractId = contractId;
     }
 
+    public Collection<ContractVO> getContracts() {
+        return contracts;
+    }
+
+    public void setContracts(Collection<ContractVO> contracts) {
+        this.contracts = contracts;
+    }
+
+    @JsonBackReference
     public TeamVO getTeam() {
 	return team;
     }

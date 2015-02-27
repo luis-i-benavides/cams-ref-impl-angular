@@ -1,6 +1,7 @@
 package com.accenture.cams.ri.ng.domain.entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,9 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "player")
@@ -34,9 +34,11 @@ public class Player implements Serializable {
     @Column(name = "contract_fk")
     private Long contractId;
 
+    @OneToMany(mappedBy = "contractPlayerId", fetch = FetchType.EAGER)
+    private Collection<Contract> contracts;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_business_id")
-    @JsonBackReference
     private Team team;
 
     /**
@@ -97,6 +99,14 @@ public class Player implements Serializable {
      */
     public void setContractId(Long contractId) {
 	this.contractId = contractId;
+    }
+
+    public Collection<Contract> getContracts() {
+	return contracts;
+    }
+
+    public void setContracts(Collection<Contract> contracts) {
+	this.contracts = contracts;
     }
 
     public Team getTeam() {
