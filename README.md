@@ -32,9 +32,7 @@ While debugging the AngularJS code locally, it is useful to reload the page in t
 
 
 # To Do (in descending priority)
-* Add feedback to user on login and logout
-* Remove security classes no longer used
-* Implement use cases 4, 5, and 17. Look at which is the best Spring Data repository interface to use, probably `JpaRepository`. Also, start using value objects to serialize and return to the browser
+* Implement use cases 5 and 17. Start using value objects to serialize and return to the browser
 * Build with Maven (coexisting with Gradle)
 * Build WAR with Gradle and test deployment to servlet container. Consult [this](http://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-gradle-plugin.html) and [this](http://docs.spring.io/spring-boot/docs/current/reference/html/howto-traditional-deployment.html#howto-create-a-deployable-war-file) for details
 * Downgrade to AngularJS 1.2.x.
