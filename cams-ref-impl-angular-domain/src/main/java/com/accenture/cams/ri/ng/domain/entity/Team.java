@@ -12,125 +12,116 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "team")
 public class Team implements Serializable {
 
-	private static final long serialVersionUID = -7973124895815987320L;
+    private static final long serialVersionUID = -7973124895815987320L;
 
-	@Id
-	@GeneratedValue
-	@Column(name = "Id")
-	private Long id;
+    @Id
+    @GeneratedValue
+    @Column(name = "Id")
+    private Long id;
 
-	@Column(name = "name")
-	private String name;
+    @Column(name = "name")
+    private String name;
 
-	@Column(name = "date_created")
-	private Date dateCreated;
+    @Column(name = "date_created")
+    private Date dateCreated;
 
-	@Column(name = "date_updated")
-	private Date dateUpdated;
+    @Column(name = "date_updated")
+    private Date dateUpdated;
 
-	@Column(name = "image")
-	private String image;
+    @Column(name = "image")
+    private String image;
 
-	@OneToMany(mappedBy = "teamBusinessId", targetEntity = Player.class, fetch = FetchType.EAGER)
-	private Collection<Player> players;
+    @OneToMany(mappedBy = "team", targetEntity = Player.class, fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private Collection<Player> players;
 
-	/**
-	 * @return the id
-	 */
-	public Long getId() {
-		return id;
-	}
+    /**
+     * @return the id
+     */
+    public Long getId() {
+	return id;
+    }
 
-	/**
-	 * @param id
-	 *            the id to set
-	 */
-	public void setId(Long id) {
-		this.id = id;
-	}
+    /**
+     * @param id
+     *            the id to set
+     */
+    public void setId(Long id) {
+	this.id = id;
+    }
 
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
+    /**
+     * @return the name
+     */
+    public String getName() {
+	return name;
+    }
 
-	/**
-	 * @param name
-	 *            the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
+    /**
+     * @param name
+     *            the name to set
+     */
+    public void setName(String name) {
+	this.name = name;
+    }
 
-	/**
-	 * @return the dateCreated
-	 */
-	public Date getDateCreated() {
-		return dateCreated;
-	}
+    /**
+     * @return the dateCreated
+     */
+    public Date getDateCreated() {
+	return dateCreated;
+    }
 
-	/**
-	 * @param dateCreated
-	 *            the dateCreated to set
-	 */
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
-	}
+    /**
+     * @param dateCreated
+     *            the dateCreated to set
+     */
+    public void setDateCreated(Date dateCreated) {
+	this.dateCreated = dateCreated;
+    }
 
-	/**
-	 * @return the dateUpdated
-	 */
-	public Date getDateUpdated() {
-		return dateUpdated;
-	}
+    /**
+     * @return the dateUpdated
+     */
+    public Date getDateUpdated() {
+	return dateUpdated;
+    }
 
-	/**
-	 * @param dateUpdated
-	 *            the dateUpdated to set
-	 */
-	public void setDateUpdated(Date dateUpdated) {
-		this.dateUpdated = dateUpdated;
-	}
+    /**
+     * @param dateUpdated
+     *            the dateUpdated to set
+     */
+    public void setDateUpdated(Date dateUpdated) {
+	this.dateUpdated = dateUpdated;
+    }
 
-	/**
-	 * @return the image
-	 */
-	public String getImage() {
-		return image;
-	}
+    /**
+     * @return the image
+     */
+    public String getImage() {
+	return image;
+    }
 
-	/**
-	 * @param image
-	 *            the image to set
-	 */
-	public void setImage(String image) {
-		this.image = image;
-	}
+    /**
+     * @param image
+     *            the image to set
+     */
+    public void setImage(String image) {
+	this.image = image;
+    }
 
-	public Collection<Player> getPlayers() {
-		return players;
-	}
+    public Collection<Player> getPlayers() {
+	return players;
+    }
 
-	public void setPlayers(Collection<Player> players) {
-		this.players = players;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Team [id=" + id + ", name=" + name + ", dateCreated="
-				+ dateCreated + ", dateUpdated=" + dateUpdated + ", image="
-				+ image + "]";
-	}
+    public void setPlayers(Collection<Player> players) {
+	this.players = players;
+    }
 
 }
