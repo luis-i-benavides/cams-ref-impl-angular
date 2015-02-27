@@ -16,5 +16,10 @@ spring:
     # This naming strategy preserves the SQL names that JPA annotations specify without any changes (i.e. camel case -> underscore separated) 
     hibernate.naming-strategy: org.hibernate.cfg.DefaultNamingStrategy   
 
+authentication:
+  query:
+    users-by-username: SELECT UserId, pwd, true FROM cookbook.login WHERE UserId=?
+    authorities-by-username: SELECT login.UserId, role.name FROM login, role WHERE login.UserId=? AND login.login_role_fk=role.RoleId
+    
 app:
   version: de4db33f

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -33,14 +34,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     DataSource dataSource;
 
+    @Value("${authentication.query.users-by-username:}")
+    private String usersByUsername;
+
+    @Value("${authentication.query.authorities-by-username:}")
+    private String authoritiesByUsername;
+
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
 
 	auth.jdbcAuthentication()
 		.dataSource(dataSource)
-		.usersByUsernameQuery("SELECT UserId, pwd, true FROM cookbook.login WHERE UserId=?")
-		.authoritiesByUsernameQuery(
-			"SELECT login.UserId, role.name FROM login, role WHERE login.UserId=? AND login.login_role_fk=role.RoleId");
+		.usersByUsernameQuery(usersByUsername)
+		.authoritiesByUsernameQuery(authoritiesByUsername);
     }
 
     @Override
