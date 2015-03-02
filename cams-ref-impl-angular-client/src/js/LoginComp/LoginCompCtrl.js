@@ -9,7 +9,6 @@ angular.module('mainApp').controller('LoginCompCtrl',
 				// On Load Action
 				var OnLoad = function() {
 					LoginCompSrv.LoadLogin().success( function(loginSession) {
-						//$scope.data.loginSession = loginSession.data;
 						if(loginSession.name) {
 							$scope.data.loginSession = {signon: loginSession.name, isNotLogged: false, isAdmin: true};
 						} else {
@@ -28,7 +27,6 @@ angular.module('mainApp').controller('LoginCompCtrl',
 					isNotLogged = $scope.data.loginSession.isNotLogged;
 					if(!isNotLogged) {
 						LoginCompSrv.LogoutUser().success( function() {
-							//$scope.data.loginSession = loginSession.data;
 							$scope.data.loginSession = {isNotLogged: true};
 						})
 						.error(function(error){
@@ -38,11 +36,25 @@ angular.module('mainApp').controller('LoginCompCtrl',
 					}
 					else {
 						LoginCompSrv.LoginUser($scope.data.loginSession).success( function(loginSession) {
-							//$scope.data.loginSession = loginSession.data;
-							OnLoad();
+							if (loginSession.indexOf('Your login attempt was not successful') > -1) {
+								console.log('Login user failed');
+								$scope.data.loginSession = {isNotLogged: true};
+								$scope.message = { Severity: 'success', Message: 'Invalid user name or password' };
+							} else {
+								OnLoad();
+							}
+						})
+						.error(function(error) {
+							console.log('Login user failed with error' + error);
+							$scope.data.loginSession = {isNotLogged: true};
 						});
 					}
 					// Remove all cache from template, to ensure the security is working.	
 					$scope.removeSecurityCache();
 				};
+				
+				$scope.closeMessage = function() {
+					$scope.message.Severity = "";
+				};
+
 			}]);

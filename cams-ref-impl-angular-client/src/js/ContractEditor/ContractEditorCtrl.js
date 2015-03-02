@@ -9,8 +9,8 @@ angular.module('mainApp').controller('ContractEditorCtrl',
 				
 				// On Load Action
 				var OnLoad = function() {
-					if((typeof selectedPlayer !=="undefined") && (typeof selectedPlayer.contractVO !== "undefined")) {
-						$scope.data.contract = $scope.data.selectedPlayer.ContractVO;
+					if((typeof selectedPlayer !=="undefined") && (typeof selectedPlayer.contract !== "undefined")) {
+						$scope.data.contract = $scope.data.selectedPlayer.contract;
 					}
 					else {
 					}

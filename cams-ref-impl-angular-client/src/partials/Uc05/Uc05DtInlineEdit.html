@@ -1,0 +1,62 @@
+	<div id="Uc05DtInlineEdit">
+		<div id="main"    >
+		<div id="panelPnl"    class="panel"   >
+			<div id="header"    class="panel-heading"   >
+				<label id="labTitle"     class="baTitle"       >
+				In Edit DataTable
+				</label>
+			</div>
+			<div id="pnlDtContent"    class="panel-body"   >
+				<div id=""       data-ng-include="'partials/PlayerSelector/PlayerSelector.html'"     >
+				</div>
+				<div id="panelSH"    class="panel panel-default"   >
+					<div id="pnlHeaderDtSaisons"    class="panel-heading"   >
+						<label id="laSaison"          >
+						Saisons
+						</label>
+					</div>
+					<div id="panelSB"    class="panel-body"   >
+						<div id=""       data-ng-include="'partials/ContractEditor/ContractEditor.html'"     >
+						</div>
+						<table id="dtSaisons" role="grid" class="table table-bordered padder padder-v">
+							<thead>
+								<tr>
+									<th id="colId"  >#</th>
+									<th id="colYear"  >Year</th>
+									<th id="colPlayed"  >Played</th>
+									<th id="colScore"  >Score</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-ng-repeat="dtSaisonsVar in data.selectedPlayer.contract.saisons ">
+							<td>
+							<label id="colId"          >
+							{{dtSaisonsVar.id}}
+							</label>
+							</td>
+							<td>
+							<input name="colYear"   type="text"       data-ng-model="dtSaisonsVar.year"   />
+							
+							</td>
+							<td>
+							<input name="colPlayed"   type="text"       data-ng-model="dtSaisonsVar.played"   />
+							
+							</td>
+							<td>
+							<input name="colScore"   type="text"       data-ng-model="dtSaisonsVar.score"   />
+							
+							</td>
+								</tr>
+							</tbody>
+						</table> 
+					</div>
+				</div>
+			</div>
+			<div id="pnlFooterDtSaison"    class="panel-footer text-right"   >
+				<button name="btnUpdate"   type="button" class="btn " data-ng-click="BtnUpdateEventClick()"     >
+				Update
+				</button>
+			</div>
+		</div>
+		</div>
+	</div>

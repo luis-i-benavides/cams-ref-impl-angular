@@ -4,29 +4,29 @@
 		Contract ID#
 		</label>
 		<label id="contractId"     class="control-label padder"       >
-		{{data.selectedPlayer.ContractVO.Id}}
+		{{data.selectedPlayer.contract.id}}
 		</label>
 		<label id="labStartDate"     class="control-label padder"       >
 		Start date:
 		</label>
-		<input name="startDate"   type="text"  class="form-control input-sm"       data-ng-model="data.selectedPlayer.ContractVO.StartDate"   />
-		<script type="text/javascript">$("input[name='startDate']").datetimepicker({minView:2, autoclose:true});</script>
+		<input name="startDate"   type="text"  class="form-control input-sm"       data-ng-model="data.selectedPlayer.contract.startDate"   />
+		<script type="text/javascript">$("input[name='startDate']").datetimepicker({minView:2, autoclose:true, format: 'YYYY-MM-DDTHH:mm:ss.SSSZZ'});</script>
 		
 		<label id="labEndDate"     class="control-label padder"       >
 		End date:
 		</label>
-		<input name="endDate"   type="text"  class="form-control input-sm"       data-ng-model="data.selectedPlayer.ContractVO.EndDate"   />
-		<script type="text/javascript">$("input[name='endDate']").datetimepicker({minView:2, autoclose:true});</script>
+		<input name="endDate"   type="text"  class="form-control input-sm"       data-ng-model="data.selectedPlayer.contract.endDate"   />
+		<script type="text/javascript">$("input[name='endDate']").datetimepicker({minView:2, autoclose:true, format: 'YYYY-MM-DDTHH:mm:ss.SSSZZ'});</script>
 		
 		<label id="labPlayerTransferable"     class="control-label padder"       >
 		Player transferable:
 		</label>
-		<input name="transferable"   type="checkbox" class="checkbox "      data-ng-model="data.selectedPlayer.ContractVO.Transferable"   />
+		<input name="transferable"   type="checkbox" class="checkbox "      data-ng-model="data.selectedPlayer.contract.transferable"   />
 		
 		<label id="labAmmount"     class="control-label padder"       >
 		Contract value:
 		</label>
-		<input name="contractValue"   type="text"  class="form-control input-sm"       data-ng-model="data.selectedPlayer.ContractVO.Value"   />
+		<input name="contractValue"   type="text"  class="form-control input-sm"       data-ng-model="data.selectedPlayer.contract.value"   />
 		
 	</div>
 	</div>

@@ -3,13 +3,13 @@
 		<label id="laSelectTeam"          >
 		Select a team:
 		</label>
-		<select name="ddTeam"    data-ng-change="DdTeamEventItemSelect(data.selectedTeam)"  data-ng-model="data.selectedTeam"   data-ng-options="ddTeam.Name for ddTeam in data.teamVOList track by ddTeam.Name"   >
+		<select name="ddTeam"    data-ng-change="DdTeamEventItemSelect(data.selectedTeam)"  data-ng-model="data.selectedTeam"   data-ng-options="ddTeam.name for ddTeam in data.teamVOList track by ddTeam.name"   >
 		
 		</select>
 		<label id="laPlayer"          >
 		Select player:
 		</label>
-		<select name="ddPlayer"    data-ng-change="DdPlayerEventItemSelect(data.selectedPlayer)"  data-ng-model="data.selectedPlayer"   data-ng-options="ddPlayer.Name for ddPlayer in data.selectedTeam.PlayersVO track by ddPlayer.Name"   >
+		<select name="ddPlayer"    data-ng-change="DdPlayerEventItemSelect(data.selectedPlayer)"  data-ng-model="data.selectedPlayer"   data-ng-options="ddPlayer.name for ddPlayer in data.selectedTeam.players track by ddPlayer.name"   >
 		
 		</select>
 	</panelGrid>

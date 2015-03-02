@@ -35,7 +35,7 @@ public class Team implements Serializable {
     @Column(name = "image")
     private String image;
 
-    @OneToMany(mappedBy = "team", targetEntity = Player.class, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "teamBusinessId", targetEntity = Player.class, fetch = FetchType.EAGER)
     private Collection<Player> players;
 
     /**
