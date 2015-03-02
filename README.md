@@ -30,9 +30,8 @@ or,
 ## Debugging the Client Code
 While debugging the AngularJS code locally, it is useful to reload the page in the browser automatically when any source file changes. You can do this by running the `gulp watch` command in `cams-ref-impl-angular/cams-ref-impl-angular-client`.  
 
-
 # To Do (in descending priority)
-* Implement use cases 5 and 17. Start using value objects to serialize and return to the browser
+* Implement use cases 17
 * Build with Maven (coexisting with Gradle)
 * Build WAR with Gradle and test deployment to servlet container. Consult [this](http://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-gradle-plugin.html) and [this](http://docs.spring.io/spring-boot/docs/current/reference/html/howto-traditional-deployment.html#howto-create-a-deployable-war-file) for details
 * Downgrade to AngularJS 1.2.x.

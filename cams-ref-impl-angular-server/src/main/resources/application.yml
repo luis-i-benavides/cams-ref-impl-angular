@@ -15,6 +15,9 @@ spring:
     show-sql: true
     # This naming strategy preserves the SQL names that JPA annotations specify without any changes (i.e. camel case -> underscore separated) 
     hibernate.naming-strategy: org.hibernate.cfg.DefaultNamingStrategy   
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
 
 authentication:
   query:

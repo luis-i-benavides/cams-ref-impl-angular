@@ -8,15 +8,10 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class TeamVO {
 
     private Long id;
-
     private String name;
-
     private Date dateCreated;
-
     private Date dateUpdated;
-
     private String image;
-
     private Collection<PlayerVO> players;
 
     public Long getId() {
@@ -66,6 +61,12 @@ public class TeamVO {
 
     public void setPlayers(Collection<PlayerVO> players) {
 	this.players = players;
+    }
+
+    @Override
+    public String toString() {
+	return "TeamVO [id=" + id + ", name=" + name + ", dateCreated=" + dateCreated + ", dateUpdated=" + dateUpdated
+		+ ", image=" + image + ", players=" + players + "]";
     }
 
 }

@@ -1,13 +1,17 @@
 package com.accenture.cams.ri.ng.domain.entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -35,6 +39,9 @@ public class Contract implements Serializable {
 
     @Column(name = "contract_player_fk")
     private Long contractPlayerId;
+
+    @OneToMany(mappedBy = "saisonContractId", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    private Collection<Saison> saisons;
 
     public Long getId() {
 	return id;
@@ -84,10 +91,12 @@ public class Contract implements Serializable {
 	this.contractPlayerId = contractPlayerId;
     }
 
-    @Override
-    public String toString() {
-	return "Contract [id=" + id + ", startDate=" + startDate + ", endDate=" + endDate + ", value=" + value
-		+ ", transferable=" + transferable + ", contractPlayerId=" + contractPlayerId + "]";
+    public Collection<Saison> getSaisons() {
+	return saisons;
+    }
+
+    public void setSaisons(Collection<Saison> saisons) {
+	this.saisons = saisons;
     }
 
 }

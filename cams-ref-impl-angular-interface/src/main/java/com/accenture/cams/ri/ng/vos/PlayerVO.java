@@ -1,22 +1,12 @@
 package com.accenture.cams.ri.ng.vos;
 
-import java.util.Collection;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 public class PlayerVO {
 
     private Long id;
-
     private String name;
-
     private Long rating;
-
-    private Long contractId;
-
-    private Collection<ContractVO> contracts;
-
-    private TeamVO team;
+    private ContractVO contract;
+    private String teamBusinessId;
 
     public Long getId() {
 	return id;
@@ -42,29 +32,26 @@ public class PlayerVO {
 	this.rating = rating;
     }
 
-    public Long getContractId() {
-	return contractId;
+    public ContractVO getContract() {
+	return contract;
     }
 
-    public void setContractId(Long contractId) {
-	this.contractId = contractId;
+    public void setContract(ContractVO contract) {
+	this.contract = contract;
     }
 
-    public Collection<ContractVO> getContracts() {
-        return contracts;
+    public String getTeamBusinessId() {
+	return teamBusinessId;
     }
 
-    public void setContracts(Collection<ContractVO> contracts) {
-        this.contracts = contracts;
+    public void setTeamBusinessId(String teamBusinessId) {
+	this.teamBusinessId = teamBusinessId;
     }
 
-    @JsonBackReference
-    public TeamVO getTeam() {
-	return team;
-    }
-
-    public void setTeam(TeamVO team) {
-	this.team = team;
+    @Override
+    public String toString() {
+	return "PlayerVO [id=" + id + ", name=" + name + ", rating=" + rating + ", contract=" + contract
+		+ ", teamBusinessId=" + teamBusinessId + "]";
     }
 
 }

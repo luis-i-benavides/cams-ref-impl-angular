@@ -17,6 +17,9 @@
 					Login
 					</label>
 				</a>
+				<alert id="message"   type="{{message.Severity}}" close="closeMessage()" data-ng-show="isNotEmpty(message.Severity) && message.Severity !== ''"       >
+					{{message.Message}}
+				</alert>
 			</div>
 			<a id="lnkLogout"  data-ng-if="data.loginSession.isAdmin"    data-ng-click="lnkLoginEventClick(data.loginSession)" >
 				<label id="labLogout" class="btn btn-success">

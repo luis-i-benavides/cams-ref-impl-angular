@@ -82,6 +82,31 @@ angular.module('mainApp').config(
                                 return Uc04Srv.getPlayersPagedDefered();
                             }]
                   }
+              })
+              .state('main.Uc05DtInlineEdit', {
+                  url: '/Uc05DtInlineEdit',
+                  templateUrl: 'partials/Uc05/Uc05DtInlineEdit.html',
+                  controller: 'Uc05DtInlineEditCtrl',
+                  resolve: {
+                      deps: ['$ocLazyLoad',
+                            function ($ocLazyLoad) {
+                                return $ocLazyLoad.load({
+                                        name: 'mainApp',
+                                        files: [
+                                        		'/js/Uc05/Uc05Srv.js'
+                                        		,'/js/Uc05/Uc05DtInlineEditCtrl.js'
+												,'/js/PlayerSelector/PlayerSelectorCtrl.js'
+												,'/js/PlayerSelector/PlayerSelectorSrv.js'
+												,'/js/ContractEditor/ContractEditorCtrl.js'
+												,'/js/ContractEditor/ContractEditorSrv.js'
+                                        	]
+                                    }
+                                );
+                            }]
+                      ,teamVOListPre: ['deps', 'Uc05Srv', '$stateParams', function(deps, Uc05Srv, $stateParams) {
+                                return Uc05Srv.getTeamWithPlayersDefered();
+                            }]
+                  }
               });
     	// use the HTML5 History API
         $locationProvider.html5Mode(true);

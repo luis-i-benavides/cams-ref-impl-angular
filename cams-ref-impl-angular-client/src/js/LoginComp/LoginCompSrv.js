@@ -45,13 +45,11 @@ angular.module("mainApp").factory("LoginCompSrv", ["$http", function ($http) {
 		
 	// Calling service operation 	
 	LoginCompSrv.LoadLogin = function () {
-		//return $http.get("/LoginComp/LoadLogin");
 		return $http.get("/user");
 	};
 		
 	// Calling service operation LoginUser
 	LoginCompSrv.LoginUser = function (loginSession) {
-		//return $http.post("/LoginComp/LoginUser", appUser);
 		var credentials = {username: loginSession.signon, password: loginSession.password};
 		return $http.post('login', param(credentials), {
 			headers: {
@@ -62,7 +60,6 @@ angular.module("mainApp").factory("LoginCompSrv", ["$http", function ($http) {
 		
 	// Calling service operation LogoutUser
 	LoginCompSrv.LogoutUser = function () {
-		//return $http.get("/LoginComp/LogoutUser");
 		return $http.post('logout', {});
 	};
 

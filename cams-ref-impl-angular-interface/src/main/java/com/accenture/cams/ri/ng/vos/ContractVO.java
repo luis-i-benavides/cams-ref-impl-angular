@@ -1,40 +1,17 @@
 package com.accenture.cams.ri.ng.vos;
 
-import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+public class ContractVO {
 
-@Entity
-@Table(name = "contract")
-public class ContractVO implements Serializable {
-
-    private static final long serialVersionUID = -4396332783203320988L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id")
     private Long id;
-
-    @Column(name = "start_date")
     private Date startDate;
-
-    @Column(name = "end_date")
     private Date endDate;
-
-    @Column(name = "value")
     private Float value;
-
-    @Column(name = "transferable")
     private Boolean transferable;
-
-    @Column(name = "contract_player_fk")
     private Long contractPlayerId;
+    private Collection<SaisonVO> saisons;
 
     public Long getId() {
 	return id;
@@ -84,10 +61,19 @@ public class ContractVO implements Serializable {
 	this.contractPlayerId = contractPlayerId;
     }
 
+    public Collection<SaisonVO> getSaisons() {
+	return saisons;
+    }
+
+    public void setSaisons(Collection<SaisonVO> saisons) {
+	this.saisons = saisons;
+    }
+
     @Override
     public String toString() {
 	return "ContractVO [id=" + id + ", startDate=" + startDate + ", endDate=" + endDate + ", value=" + value
-		+ ", transferable=" + transferable + ", contractPlayerId=" + contractPlayerId + "]";
+		+ ", transferable=" + transferable + ", contractPlayerId=" + contractPlayerId + ", saisons=" + saisons
+		+ "]";
     }
 
 }

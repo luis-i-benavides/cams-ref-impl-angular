@@ -10,11 +10,11 @@ angular.module('mainApp').controller('PlayerSelectorCtrl',
 				
 				// Event action DdPlayerEventItemSelect
 				$scope.DdPlayerEventItemSelect = function(selectedPlayer, causeValidation) {
-					console.log('Selected player: '+selectedPlayer.Name);
+					console.log('Selected player: '+selectedPlayer.name);
 				};
 				// Event action DdTeamEventItemSelect
 				$scope.DdTeamEventItemSelect = function(selectedTeam, causeValidation) {
-					console.log('Selected team:' + selectedTeam.Name);
+					console.log('Selected team:' + selectedTeam.name);
 				};
  				// Generic multi selection component.
 				$scope.multiSel = function (item, list) {
