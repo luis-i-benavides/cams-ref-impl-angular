@@ -16,7 +16,10 @@ or to run the application in production mode (which optimizes static resources u
 
     ./gradlew :server:bootRun
     
-then go to [http://localhost:8080/](http://localhost:8080/)
+then go to [http://localhost:8080/](http://localhost:8080/).
+
+To be able to attach a remote debugger to the running application, append `--debug-jvm` to the commands above. See [here](http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#howto-remote-debug-gradle-run)
+for more details.   
 
 ## Using an IDE
 Gradle can generate the configuration files for either eclipse or IntelliJ IDEA. From the project root execute:
@@ -28,10 +31,14 @@ or,
      ./gradlew idea  
 
 ## Debugging the Client Code
-While debugging the AngularJS code locally, it is useful to reload the page in the browser automatically when any source file changes. You can do this by running the `gulp watch` command in `cams-ref-impl-angular/cams-ref-impl-angular-client`.  
+While debugging the AngularJS code locally, it is useful to reload the page in the browser automatically when any source file changes. You can do this by running the `gulp watch` command in `cams-ref-impl-angular/cams-ref-impl-angular-client`. Note that you must have
+ started the application in development mode to debug the client code.
+ 
+## Debugging the Server Code
+
 
 # To Do (in descending priority)
-* Implement use cases 17
+* Implement use case 17
 * Build with Maven (coexisting with Gradle)
 * Build WAR with Gradle and test deployment to servlet container. Consult [this](http://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-gradle-plugin.html) and [this](http://docs.spring.io/spring-boot/docs/current/reference/html/howto-traditional-deployment.html#howto-create-a-deployable-war-file) for details
 * Downgrade to AngularJS 1.2.x.
