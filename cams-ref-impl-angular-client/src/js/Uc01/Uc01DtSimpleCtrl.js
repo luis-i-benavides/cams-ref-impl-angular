@@ -10,6 +10,9 @@ angular.module('mainApp').controller('Uc01DtSimpleCtrl',
 				};
 				// Assign preloading variable to scope
 				$scope.data.teamList = teamListPre.data;
+				if (typeof teamListPre.messages !=='undefined' && teamListPre.messages !== null && teamListPre.messages.length >= 0) {
+					$scope.message = teamListPre.messages[0];
+				}
 
 				// On Load Action
 				var MainEventOnLoad = function() {
@@ -18,10 +21,10 @@ angular.module('mainApp').controller('Uc01DtSimpleCtrl',
 				MainEventOnLoad();
 				// Event action BtnSelectEventClick
 				$scope.BtnSelectEventClick = function(teamBusiness, causeValidation) {
-					$scope.message = { Severity: 'success', Message: teamBusiness.name };
+					$scope.message = { severity: 'success', message: teamBusiness.name };
 				};
 				$scope.closeMessage = function() {
-					$scope.message.Severity = "";
+					$scope.message.severity = "";
 				};
  				// Generic multi selection component.
 				$scope.multiSel = function (item, list) {
