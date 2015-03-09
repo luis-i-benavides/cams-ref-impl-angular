@@ -40,7 +40,7 @@ public class Contract implements Serializable {
     @Column(name = "contract_player_fk")
     private Long contractPlayerId;
 
-    @OneToMany(mappedBy = "saisonContractId", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "saisonContractId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Collection<Saison> saisons;
 
     public Long getId() {

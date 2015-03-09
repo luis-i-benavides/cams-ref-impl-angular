@@ -36,7 +36,6 @@ While debugging the AngularJS code locally, it is useful to reload the page in t
  
 ## Debugging the Server Code
 
-
 # To Do (in descending priority)
 * Implement use case 17
 * Build with Maven (coexisting with Gradle)
