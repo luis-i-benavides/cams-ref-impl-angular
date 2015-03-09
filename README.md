@@ -36,9 +36,12 @@ While debugging the AngularJS code locally, it is useful to reload the page in t
  
 ## Debugging the Server Code
 
-
 # To Do (in descending priority)
+<<<<<<< HEAD
 * Implement use case 17
+=======
+* Implement use cases 17
+>>>>>>> 798d7c92beb3a0166d746c8d12aa60b1be6d02ae
 * Build with Maven (coexisting with Gradle)
 * Build WAR with Gradle and test deployment to servlet container. Consult [this](http://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-gradle-plugin.html) and [this](http://docs.spring.io/spring-boot/docs/current/reference/html/howto-traditional-deployment.html#howto-create-a-deployable-war-file) for details
 * Downgrade to AngularJS 1.2.x.
