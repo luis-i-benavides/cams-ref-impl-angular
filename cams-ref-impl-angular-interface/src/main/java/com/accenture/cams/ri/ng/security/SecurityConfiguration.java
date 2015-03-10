@@ -51,16 +51,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-	http.formLogin()
-		.and()
+	http
+		.formLogin()
+			.and()
 		.logout()
-		.and()
+			.and()
 		.authorizeRequests()
-		// Permit anonymous access to static resources and REST
-		// endpoints necessary to render the initial page
-		// (i.e. /Menu/**)
-		.antMatchers("/index.html", "/", "/partials/**", "/lib/**", "/fonts/**", "/Menu/**").permitAll()
-		.anyRequest().authenticated().and().csrf().csrfTokenRepository(csrfTokenRepository()).and()
+			// Permit anonymous access to static resources and REST
+			// endpoints necessary to render the initial page
+			// (i.e. /Menu/**)
+			.antMatchers("/index.html", "/", "/partials/**", "/lib/**", "/fonts/**", "/Menu/**").permitAll()
+			.anyRequest().authenticated()
+			.and()
+		.csrf()
+			.csrfTokenRepository(csrfTokenRepository())
+			.and()
 		.addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);
     }
 
