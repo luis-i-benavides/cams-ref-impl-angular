@@ -40,9 +40,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Value("${authentication.query.authorities-by-username:}")
     private String authoritiesByUsername;
 
-    @Autowired
-    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-
+    @Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
 	auth.jdbcAuthentication()
 		.dataSource(dataSource)
 		.usersByUsernameQuery(usersByUsername)
